@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% from "_formhelpers.html" import render_field %}
+{% block content %}
+    <p>
+    Reset your password.
+    </p>
+    <form method=post action="{{ url_for('auth.reset_verified', user=user, token=token, _external=True) }}">
+        {{ form.csrf_token }}
+        {{ render_field(form.password, class="form-control") }}
+        {{ render_field(form.password_repeat, class="form-control") }}
+
+
+    <p><button type="submit" class="btn btn-primary">Confirm Reset</button></p>
+    </form>
+{% endblock %}
